@@ -26,9 +26,45 @@ var sass = require('gulp-sass');
 });*/
 
 gulp.task('sass', function(){
-  return gulp.src('app/scss/styles.scss')
+  return gulp.src('app/scss/**/*.scss') // Gets all files ending with .scss in app/scss and children dirs
     .pipe(sass()) // Converts Sass to CSS with gulp-sass
     .pipe(gulp.dest('app/css'))
+    .pipe(browserSync.reload({ //allows Browser Sync to inject new CSS styles (update the CSS) into the browser whenever the sass task is ran.
+      stream: true
+    }))
 });
 
 // run gulp sass in the command line, you should now be able to see that a styles.css 
+
+/* // Gulp watch syntax
+gulp.watch('files-to-watch', ['tasks', 'to', 'run']); */
+// Gulp watch syntax
+//gulp.watch('app/scss/**/*.scss', ['sass']); //tells Gulp to automatically run the sass task whenever a file is saved
+
+// gulp.task('watch', function(){
+//gulp.watch('app/scss/**/*.scss', ['sass']); 
+// Other watchers
+//}) to watch more than one type of file at once. To do so, we can group together multiple watch processes into a watch task
+//ctrl c to cancel gulp watch in the cmd
+
+
+var browserSync = require('browser-sync').create(); //create a browserSync task to enable Gulp to spin up a server using Browser Sync
+
+
+/*gulp.task('watch', ['array', 'of', 'tasks', 'to', 'complete','before', 'watch'], function (){
+  // adding a second argument to the watch task
+})*/
+
+
+gulp.task('browserSync', function() {
+  browserSync.init({
+    server: {
+      baseDir: 'app'
+    },
+  })
+})
+
+gulp.task('watch',['browserSync'], function(){ //telling the watch task that browserSync must be completed before watch is allowed to run.
+  gulp.watch('app/scss/**/*.scss', ['sass']); 
+  // Other watchers
+})
