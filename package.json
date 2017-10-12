@@ -1,0 +1,22 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "It's a test project using gulp",
+  "main": "index.js",
+  "scripts": {
+    "test": "hello world"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FeyAgape/Project.git"
+  },
+  "author": "Fey Ijaware",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FeyAgape/Project/issues"
+  },
+  "homepage": "https://github.com/FeyAgape/Project#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}
