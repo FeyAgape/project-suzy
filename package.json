@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/FeyAgape/Project/issues"
   },
-  "homepage": "https://github.com/FeyAgape/Project#readme"
+  "homepage": "https://github.com/FeyAgape/Project#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
 }
