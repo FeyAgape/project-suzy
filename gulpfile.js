@@ -15,3 +15,11 @@ gulp.task('sass', function(){
     .pipe(sass()) // Converts Sass to CSS with gulp-sass
     .pipe(gulp.dest('app/css'))
 });
+
+// Gulp watch syntax
+//gulp.watch('app/scss/**/*.scss', ['sass']); // this only allows us to watch one type of file
+//to watch multi tasks we can group together multiple watch processes into a watch task
+gulp.task('watch', function(){
+  gulp.watch('app/scss/**/*.scss', ['sass']); 
+  // Other watchers
+})
