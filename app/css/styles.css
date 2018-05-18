@@ -1,8 +1,12 @@
 .testing {
-  width: 71.42857%; }
+  width: 71.42857%;
+  display: flex;
+  padding: 5%; }
 
 .col-3 {
-  width: 33.33333%; }
+  width: 33.33333%;
+  display: flex; }
 
 .col-2 {
-  width: 50%; }
+  width: 50%;
+  display: flex; }
