@@ -1,9 +1,10 @@
-# Gulp-Project-Template-2: A project using gulp and Suzy
+# Gulp-Project-Template-3: A project using gulp and Suzy
 
 ## Gulp Sass
 ## Gulp autoprefixer
 ## Gulp Watch
 ## Browsersync
+## Suzy
 
 ### Installation
 
