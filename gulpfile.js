@@ -19,7 +19,10 @@ gulp.task('sass', function(){
   //return gulp.src('app/scss/styles.scss') // this only lets us compile .scss file
   // using globbing allow us to compile more than one
   return gulp.src('app/scss/**/*.scss') // using Globbing gets all files ending with .scss in app/scss and children dirs
-    .pipe(sass()) // Converts Sass to CSS with gulp-sass
+    .pipe(sass({
+          outputStyle: 'compressed',
+          includePaths: ['node_modules/susy/sass']
+      }).on('error', sass.logError)) 
     .pipe(autoprefixer()) // Passes it through gulp-autoprefixer
     .pipe(gulp.dest('app/css'))
     .pipe(browserSync.reload({

@@ -1,4 +1,4 @@
-# Gulp-Project-Template-2: A project using gulp
+# Gulp-Project-Template-2: A project using gulp and Suzy
 
 ## Gulp Sass
 ## Gulp autoprefixer
@@ -116,6 +116,29 @@ Here's what a real task may look like:
 As you can see, a real task takes in two additional gulp methods — gulp.src and gulp.dest.
 
 **gulp.src tells the Gulp task what files to use for the task, while gulp.dest tells Gulp where to output the files once the task is completed.**
+
+### Suzy Installation 
+
+`npm install susy`
+
+Add a gulp task:
+
+``// gulpfile.js
+gulp.task('sass', function() {
+  return gulp.src('scss/*.scss')
+      .pipe(sass({
+          outputStyle: 'compressed',
+          includePaths: ['node_modules/susy/sass']
+      }).on('error', sass.logError))
+      .pipe(gulp.dest('dist/css'));
+});``
+
+Start using Susy:
+
+`/* app.scss */
+@import 'susy';`
+
+
 
 ### Step 4: A real task where we compile Sass files into CSS files.
 
