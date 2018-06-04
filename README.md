@@ -117,29 +117,6 @@ As you can see, a real task takes in two additional gulp methods — gulp.src an
 
 **gulp.src tells the Gulp task what files to use for the task, while gulp.dest tells Gulp where to output the files once the task is completed.**
 
-### Suzy Installation 
-
-`npm install susy`
-
-Add a gulp task:
-
-``// gulpfile.js
-gulp.task('sass', function() {
-  return gulp.src('scss/*.scss')
-      .pipe(sass({
-          outputStyle: 'compressed',
-          includePaths: ['node_modules/susy/sass']
-      }).on('error', sass.logError))
-      .pipe(gulp.dest('dist/css'));
-});``
-
-Start using Susy:
-
-`/* app.scss */
-@import 'susy';`
-
-
-
 ### Step 4: A real task where we compile Sass files into CSS files.
 
 We can compile Sass to CSS in Gulp with the help of a plugin called `gulp-sass`. You can install gulp-sass into your project by using the npm install command like we did for gulp.
@@ -313,3 +290,41 @@ And in this case we're adding the browserSync task.
   gulp.watch('app/js/**/*.js', browserSync.reload); 
 });`
 
+
+### Suzy Installation 
+
+`npm install susy`
+
+Add a gulp task:
+
+``// gulpfile.js
+gulp.task('sass', function() {
+  return gulp.src('scss/*.scss')
+      .pipe(sass({
+          outputStyle: 'compressed',
+          includePaths: ['node_modules/susy/sass']
+      }).on('error', sass.logError))
+      .pipe(gulp.dest('dist/css'));
+});``
+
+our file looks like this 
+
+``gulp.task('sass', function(){
+  //return gulp.src('app/scss/styles.scss') // this only lets us compile .scss file
+  // using globbing allow us to compile more than one
+  return gulp.src('app/scss/**/*.scss') // using Globbing gets all files ending with .scss in app/scss and children dirs
+    .pipe(sass({
+          outputStyle: 'compressed',
+          includePaths: ['node_modules/susy/sass']
+      }).on('error', sass.logError)) 
+    .pipe(autoprefixer()) // Passes it through gulp-autoprefixer
+    .pipe(gulp.dest('app/css'))
+    .pipe(browserSync.reload({
+      stream: true
+    }))
+});``
+
+Start using Susy:
+
+`/* app.scss */
+@import 'susy';`

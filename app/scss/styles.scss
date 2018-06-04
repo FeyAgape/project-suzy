@@ -1,7 +1,12 @@
 // styles.scss
 
 /* app.scss */
-@import "~susy/sass/susy";
+@import 'susy';
+
+.simple-grid {
+  float: left;
+  width: percentage(3/12);
+}
 
 .testing {
   width: percentage(5/7);
